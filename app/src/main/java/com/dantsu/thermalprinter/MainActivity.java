@@ -113,16 +113,6 @@ public class MainActivity extends AppCompatActivity {
                 items[0] = "Default printer";
                 int i = 0;
                 for (BluetoothConnection device : bluetoothDevicesList) {
-                    if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
-                        // TODO: Consider calling
-                        //    ActivityCompat#requestPermissions
-                        // here to request the missing permissions, and then overriding
-                        //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                        //                                          int[] grantResults)
-                        // to handle the case where the user grants the permission. See the documentation
-                        // for ActivityCompat#requestPermissions for more details.
-                        return;
-                    }
                     items[++i] = device.getDevice().getName();
                 }
 
@@ -280,7 +270,7 @@ public class MainActivity extends AppCompatActivity {
     public AsyncEscPosPrinter getAsyncEscPosPrinter(DeviceConnection printerConnection) {
         SimpleDateFormat format = new SimpleDateFormat("'on' yyyy-MM-dd 'at' HH:mm:ss");
         AsyncEscPosPrinter printer = new AsyncEscPosPrinter(printerConnection, 203, 48f, 32);
-        return printer.addTextToPrint(
+        printer.addTextToPrint(
             "[C]<img>" + PrinterTextParserImg.bitmapToHexadecimalString(printer, this.getApplicationContext().getResources().getDrawableForDensity(R.drawable.logo, DisplayMetrics.DENSITY_MEDIUM)) + "</img>\n" +
                 "[L]\n" +
                 "[C]<u><font size='big'>ORDER N°045</font></u>\n" +
@@ -311,5 +301,9 @@ public class MainActivity extends AppCompatActivity {
                 "[L]\n" +
                 "[C]<qrcode size='20'>https://dantsu.com/</qrcode>\n"
         );
+        if (printerConnection.isConnected()) {
+            printerConnection.disconnect();
+        }
+        return printer;
     }
 }
