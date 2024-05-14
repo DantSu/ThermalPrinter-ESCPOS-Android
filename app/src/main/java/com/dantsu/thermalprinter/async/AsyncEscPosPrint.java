@@ -77,6 +77,9 @@ public abstract class AsyncEscPosPrint extends AsyncTask<AsyncEscPosPrinter, Int
                 Thread.sleep(500);
             }
 
+            //Close connection with webSocket when using TCP
+            printer.disconnectPrinter();
+
             this.publishProgress(AsyncEscPosPrint.PROGRESS_PRINTED);
 
         } catch (EscPosConnectionException e) {
