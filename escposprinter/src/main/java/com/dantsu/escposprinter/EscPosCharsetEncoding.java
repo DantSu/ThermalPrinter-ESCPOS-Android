@@ -1,11 +1,11 @@
 package com.dantsu.escposprinter;
 
 public class EscPosCharsetEncoding {
-    private String charsetName;
-    private byte[] charsetCommand;
+    private final String charsetName;
+    private final byte[] charsetCommand;
 
     /**
-     * Create new instance of EscPosCharsetEncoding.
+     * Create a new instance of EscPosCharsetEncoding.
      *
      * @param charsetName Name of charset encoding (Ex: windows-1252)
      * @param escPosCharsetId Id of charset encoding for your printer (Ex: 16)
@@ -16,10 +16,10 @@ public class EscPosCharsetEncoding {
     }
 
     public byte[] getCommand() {
-        return this.charsetCommand;
+        return charsetCommand;
     }
 
     public String getName() {
-        return this.charsetName;
+        return charsetName;
     }
 }
