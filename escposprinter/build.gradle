@@ -3,17 +3,15 @@ plugins {
     id 'maven-publish'
 }
 
-def libraryVersionCode = 3003000
-def libraryVersionName = "3.3.0"
+def libraryVersionName = "3.5.0"
 
 android {
-    compileSdkVersion 33
+    namespace 'com.dantsu.escposprinter'
+    compileSdkVersion 34
 
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 33
-        versionCode libraryVersionCode
-        versionName libraryVersionName
+        minSdkVersion 19
+        targetSdkVersion 34
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
@@ -26,16 +24,21 @@ android {
         }
     }
 
+    publishing {
+        // Publishes "release" build component created by
+        // Android Gradle plugin
+        singleVariant("release")
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.zxing:core:3.4.0'
+    implementation 'com.google.zxing:core:3.5.3'
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
 }
 
 
@@ -55,5 +58,11 @@ afterEvaluate {
                 }
             }
         }
+    }
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
     }
 }
