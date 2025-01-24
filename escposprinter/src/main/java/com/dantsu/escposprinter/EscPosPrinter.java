@@ -151,6 +151,16 @@ public class EscPosPrinter extends EscPosPrinterSize {
     }
 
     /**
+     * Print a formatted text and partial cut the paper. Read the README.md for more information about text formatting options.
+     *
+     * @param text Formatted text to be printed.
+     * @return Fluent interface
+     */
+    public EscPosPrinter printFormattedTextAndPartialCut(String text) throws EscPosConnectionException, EscPosParserException, EscPosEncodingException, EscPosBarcodeException {
+        return this.printFormattedTextAndCut(text, 20f);
+    }
+
+    /**
      * Print a formatted text and cut the paper. Read the README.md for more information about text formatting options.
      *
      * @param text        Formatted text to be printed.
@@ -159,6 +169,17 @@ public class EscPosPrinter extends EscPosPrinterSize {
      */
     public EscPosPrinter printFormattedTextAndCut(String text, float mmFeedPaper) throws EscPosConnectionException, EscPosParserException, EscPosEncodingException, EscPosBarcodeException {
         return this.printFormattedTextAndCut(text, this.mmToPx(mmFeedPaper));
+    }
+
+    /**
+     * Print a formatted text and partial cut the paper. Read the README.md for more information about text formatting options.
+     *
+     * @param text        Formatted text to be printed.
+     * @param mmFeedPaper millimeter distance feed paper at the end.
+     * @return Fluent interface
+     */
+    public EscPosPrinter printFormattedTextAndPartialCut(String text, float mmFeedPaper) throws EscPosConnectionException, EscPosParserException, EscPosEncodingException, EscPosBarcodeException {
+        return this.printFormattedTextAndPartialCut(text, this.mmToPx(mmFeedPaper));
     }
 
     /**
@@ -175,6 +196,24 @@ public class EscPosPrinter extends EscPosPrinterSize {
 
         this.printFormattedText(text, dotsFeedPaper);
         this.printer.cutPaper();
+
+        return this;
+    }
+
+    /**
+     * Print a formatted text and partial cut the paper. Read the README.md for more information about text formatting options.
+     *
+     * @param text          Formatted text to be printed.
+     * @param dotsFeedPaper distance feed paper at the end.
+     * @return Fluent interface
+     */
+    public EscPosPrinter printFormattedTextAndPartialCut(String text, int dotsFeedPaper) throws EscPosConnectionException, EscPosParserException, EscPosEncodingException, EscPosBarcodeException {
+        if (this.printer == null || this.printerNbrCharactersPerLine == 0) {
+            return this;
+        }
+
+        this.printFormattedText(text, dotsFeedPaper);
+        this.printer.partialCutPaper();
 
         return this;
     }

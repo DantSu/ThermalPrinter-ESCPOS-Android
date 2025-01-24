@@ -738,6 +738,21 @@ public class EscPosPrinterCommands {
     }
 
     /**
+     * Partial cut the paper
+     *
+     * @return Fluent interface
+     */
+    public EscPosPrinterCommands partialCutPaper() throws EscPosConnectionException {
+        if (!this.printerConnection.isConnected()) {
+            return this;
+        }
+
+        this.printerConnection.write(new byte[]{0x1D, 0x56, 66, 0x00});
+        this.printerConnection.send(100);
+        return this;
+    }
+
+    /**
      * Open the cash box
      *
      * @return Fluent interface
