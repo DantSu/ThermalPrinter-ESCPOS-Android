@@ -487,6 +487,11 @@ Print a formatted text, feed paper (20 millimeters) and cut the paper. Read the 
 - **param** `String text` : Formatted text to be printed.
 - **return** `Printer` : Fluent interface
 
+#### Method : `printFormattedTextAndPartialCut(String text)`
+Print a formatted text, feed paper (20 millimeters) and partial cut the paper. Read the ["Formatted Text : Syntax guide" section](#formatted-text--syntax-guide) for more information about text formatting options.
+- **param** `String text` : Formatted text to be printed.
+- **return** `Printer` : Fluent interface
+
 #### Method : `printFormattedText(String text, float mmFeedPaper)`
 Print a formatted text and feed paper (`mmFeedPaper` millimeters). Read the ["Formatted Text : Syntax guide" section](#formatted-text--syntax-guide) for more information about text formatting options.
 - **param** `String text` : Formatted text to be printed.
@@ -495,6 +500,12 @@ Print a formatted text and feed paper (`mmFeedPaper` millimeters). Read the ["Fo
 
 #### Method : `printFormattedTextAndCut(String text, float mmFeedPaper)`
 Print a formatted text, feed paper (`mmFeedPaper` millimeters) and cut the paper. Read the ["Formatted Text : Syntax guide" section](#formatted-text--syntax-guide) for more information about text formatting options.
+- **param** `String text` : Formatted text to be printed.
+- **param** `float mmFeedPaper` : Millimeter distance feed paper at the end.
+- **return** `Printer` : Fluent interface
+
+#### Method : `printFormattedTextAndPartialCut(String text, float mmFeedPaper)`
+Print a formatted text, feed paper (`mmFeedPaper` millimeters) and partial cut the paper. Read the ["Formatted Text : Syntax guide" section](#formatted-text--syntax-guide) for more information about text formatting options.
 - **param** `String text` : Formatted text to be printed.
 - **param** `float mmFeedPaper` : Millimeter distance feed paper at the end.
 - **return** `Printer` : Fluent interface
@@ -513,6 +524,12 @@ Print a formatted text and feed paper (`dotsFeedPaper` dots). Read the ["Formatt
 
 #### Method : `printFormattedTextAndCut(String text, int dotsFeedPaper)`
 Print a formatted text, feed paper (`dotsFeedPaper` dots) and cut the paper. Read the ["Formatted Text : Syntax guide" section](#formatted-text--syntax-guide) for more information about text formatting options.
+- **param** `String text` : Formatted text to be printed.
+- **param** `int dotsFeedPaper` : Distance feed paper at the end.
+- **return** `Printer` : Fluent interface
+
+#### Method : `printFormattedTextAndPartialCut(String text, int dotsFeedPaper)`
+Print a formatted text, feed paper (`dotsFeedPaper` dots) and partial cut the paper. Read the ["Formatted Text : Syntax guide" section](#formatted-text--syntax-guide) for more information about text formatting options.
 - **param** `String text` : Formatted text to be printed.
 - **param** `int dotsFeedPaper` : Distance feed paper at the end.
 - **return** `Printer` : Fluent interface
